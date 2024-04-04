@@ -17,7 +17,7 @@ public class TransactionHistoryController {
     }
 
     @GetMapping
-    public TransactionHistory getTransactionHistory(Long id){ // sukses
+    public TransactionHistory getTransactionHistory(@RequestParam Long id){ // sukses
         return transactionHistoryService.getTrasactionHistoryById(id).get();
     }
 

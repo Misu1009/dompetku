@@ -17,7 +17,7 @@ public class SlotController {
     }
 
     @GetMapping // sukses
-    public Slot getSlot(Long id){
+    public Slot getSlot(@RequestParam Long id){
         return slotService.getSlotById(id).get();
     }
 
