@@ -49,7 +49,7 @@ public class WalletController { // sampe sini 4/1/2024
         walletService.decrease(walletId, amount);
     }
 
-    @DeleteMapping(path = "/deleteSlot/{slotId}")// sukses
+    @DeleteMapping(path = "/deleteSlot/{slotId}")// sukses fk
     public void deleteSlot(
             @PathVariable("slotId") Long slotId
     ){

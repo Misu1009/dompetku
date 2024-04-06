@@ -48,13 +48,13 @@ public class OwnerController {
     ){
         ownerService.addNewWallet(ownerId);
     }
-    @PostMapping(path = "/deleteWallet/{walletId}") // sukses
+    @PostMapping(path = "/deleteWallet/{walletId}") // sukses fk
     public void deleteWallet(
             @PathVariable("walletId") Long walletId
     ){
         ownerService.deleteWallet(walletId);
     }
-    @PostMapping(path = "/delete/{ownerId}") // sukses
+    @PostMapping(path = "/delete/{ownerId}") // sukses fk
     public void deleteOwner(
             @PathVariable("ownerId") Long ownerId
     ){
