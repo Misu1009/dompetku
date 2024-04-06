@@ -66,14 +66,13 @@ public class OwnerService {
         owner.setWallet(null);
 
         ownerRepository.save(owner);
-        wallet.setOwner(null);
         walletRepository.deleteById(walletId);
     }
     public void deleteOwner(Long ownerId){
-        Owner owner = ownerRepository.getReferenceById(ownerId);
-        Wallet wallet = owner.getWallet();
-        wallet.setOwner(null);
-        walletRepository.save(wallet);
+//        Owner owner = ownerRepository.getReferenceById(ownerId);
+//        Wallet wallet = owner.getWallet();
+//        wallet.setOwner(null);
+//        walletRepository.save(wallet);
 
         ownerRepository.deleteById(ownerId);
     }

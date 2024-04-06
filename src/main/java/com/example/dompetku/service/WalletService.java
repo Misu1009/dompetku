@@ -60,8 +60,11 @@ public class WalletService {
     public void deleteSlot(Long slotId){
         Slot slot = slotRepository.getReferenceById(slotId);
         Wallet wallet = slot.getWallet();
-        wallet.getSlots().remove(slot);
-        walletRepository.save(wallet);
+//        wallet.getSlots().remove(slot);
+//        walletRepository.save(wallet);
+
+        wallet.setUnUsedBalance(wallet.getUnUsedBalance()+slot.getBalance());
+        wallet.setUsedBalance(wallet.getUsedBalance()-slot.getBalance());
 
         slotRepository.deleteById(slotId);
     }

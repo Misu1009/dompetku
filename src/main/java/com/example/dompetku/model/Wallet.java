@@ -26,7 +26,7 @@ public class Wallet {
     private int usedBalance;
 
     @JsonIgnoreProperties("wallet")
-    @OneToMany(mappedBy = "wallet")
+    @OneToMany(mappedBy = "wallet", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Slot> slots;
 
     @JsonIgnoreProperties("wallet")

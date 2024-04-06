@@ -25,7 +25,7 @@ public class Owner {
     private String password;
 
     @JsonIgnoreProperties("owner")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "wallet_id", nullable = true)
     private Wallet wallet;
 
