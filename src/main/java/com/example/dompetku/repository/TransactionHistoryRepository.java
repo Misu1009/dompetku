@@ -14,4 +14,7 @@ import java.util.Optional;
 public interface TransactionHistoryRepository extends JpaRepository<TransactionHistory, Long>  {
     @Query("SELECT h FROM TransactionHistory h INNER JOIN h.slot s JOIN s.wallet w WHERE w.id = :walletId")
     List<TransactionHistory> getAllByWalletId(@Param("walletId") Long walletId);
+
+    List<TransactionHistory> getAllTransactionHistoryByType(String type);
+
 }

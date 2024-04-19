@@ -20,9 +20,9 @@ public class OwnerController {
     }
 
     @GetMapping // sukses
-    public Owner getOwnerByUsername(@RequestParam String username){
+    public Owner getOwnerByUsername(@RequestParam String username, @RequestParam String password){
         Optional<Owner> owner = ownerService.getOwnerByUsername(username);
-        if(owner.isPresent()){
+        if(owner.isPresent() && owner.get().getPassword().equals(password)){
             return owner.get();
         }
         return new Owner();

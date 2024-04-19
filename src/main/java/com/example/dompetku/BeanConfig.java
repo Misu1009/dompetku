@@ -31,59 +31,45 @@ public class BeanConfig {
         return args->{
             Owner owner = new Owner("Vincent", "tangan");
             ownerRepository.save(owner);
-            Wallet wallet1 = new Wallet(100000, 100000, owner);
+            Wallet wallet1 = new Wallet(100, 1650, owner);
             walletRepository.save(wallet1);
 
             owner.setWallet(wallet1);
             ownerRepository.save(owner);
 
-            Slot slot1 = new Slot("Makan", 150000, wallet1);
-            Slot slot2 = new Slot("Kuliah", 50000, wallet1);
+            Slot slot1 = new Slot("Makan", 210, wallet1);
+            Slot slot2 = new Slot("Kuliah", 1440, wallet1);
             slotRepository.saveAll(List.of(slot1, slot2));
 
             TransactionHistory transactionHistory1a = new TransactionHistory(
-                    10000,
+                    10,
                     new GregorianCalendar(2024, Calendar.JANUARY, 10).getTime(),
                     "Beli Cilok",
                     "DECREASE",
                     slot1
             );
             TransactionHistory transactionHistory1b = new TransactionHistory(
-                    200000,
+                    200,
                     new GregorianCalendar(2024, Calendar.MARCH, 20).getTime(),
                     "Beli Sushi Tei",
-                    "DECREASE",
+                    "DEPOSIT",
                     slot1
             );
             TransactionHistory transactionHistory2a = new TransactionHistory(
-                    9000000,
+                    900,
                     new GregorianCalendar(2024, Calendar.FEBRUARY, 30).getTime(),
                     "BP3",
                     "DECREASE",
                     slot2
             );
             TransactionHistory transactionHistory2b = new TransactionHistory(
-                    540000,
+                    540,
                     new GregorianCalendar(2024, Calendar.APRIL, 25).getTime(),
                     "SKS 1",
-                    "DECREASE",
+                    "DEPOSIT",
                     slot2
             );
             transactionHistoryRepository.saveAll(List.of(transactionHistory1a, transactionHistory1b, transactionHistory2a, transactionHistory2b));
-
-//            Student kevin = new Student(
-//                    "Kevin Wijaya",
-//                    "kevin.w271010@gmail.com",
-//                    LocalDate.of(2003, Month.AUGUST, 27)
-//            );
-//            Student naruto = new Student(
-//                    "Uzumaki Naruto",
-//                    "naruto@gmail.com",
-//                    LocalDate.of(1987, Month.OCTOBER, 10)
-//            );
-//            repository.saveAll(
-//                    List.of(kevin, naruto)
-//            );
         };
     }
 }

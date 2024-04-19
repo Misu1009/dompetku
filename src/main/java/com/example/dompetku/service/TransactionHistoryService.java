@@ -6,6 +6,7 @@ import com.example.dompetku.repository.TransactionHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,6 +28,10 @@ public class TransactionHistoryService {
         transactionHistory.setType(type);
 
         transactionHistoryRepository.save(transactionHistory);
+    }
+
+    public List<TransactionHistory> getALlTransactionHistoryByType(String type){
+        return transactionHistoryRepository.getAllTransactionHistoryByType(type);
     }
 
 }
