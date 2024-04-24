@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Optional;
 
@@ -52,6 +53,7 @@ public class SlotService {
         Wallet wallet = slot.getWallet();
 
         wallet.setUsedBalance(wallet.getUsedBalance() - amount);
+        wallet.setUnUsedBalance(wallet.getUnUsedBalance() + amount);
         walletRepository.save(wallet);
 
         slot.setBalance(slot.getBalance() - amount);
@@ -76,7 +78,7 @@ public class SlotService {
         transactionHistory.setDescription(description);
         transactionHistory.setType(type);
         transactionHistory.setSlot(slot);
-        transactionHistory.setDate(new GregorianCalendar(2090, Calendar.JANUARY, 10).getTime());
+        transactionHistory.setDate(new Date());
         transactionHistoryRepository.save(transactionHistory);
 
         slot.getHistories().add(transactionHistory);

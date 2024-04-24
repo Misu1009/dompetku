@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:3000")
 @RequestMapping(path = "api/v1/dompetku/transactionHistory")
 public class TransactionHistoryController {
     private final TransactionHistoryService transactionHistoryService;
@@ -19,7 +20,7 @@ public class TransactionHistoryController {
     }
 
     @GetMapping
-    public TransactionHistory getTransactionHistory(@RequestParam Long id){ // sukses
+    public TransactionHistory getTransactionHistory(@RequestParam Long id){
         return transactionHistoryService.getTrasactionHistoryById(id).get();
     }
 

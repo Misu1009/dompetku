@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin("http://localhost:3000")
 @RequestMapping(path = "api/v1/dompetku/slot")
 public class SlotController {
     private final SlotService slotService;
@@ -16,12 +17,12 @@ public class SlotController {
         this.slotService = slotService;
     }
 
-    @GetMapping // sukses
+    @GetMapping
     public Slot getSlot(@RequestParam Long id){
         return slotService.getSlotById(id).get();
     }
 
-    @PutMapping(path = "/deposit/{slotId}") // sukses
+    @PutMapping(path = "/deposit/{slotId}")
     public void deposit(
             @PathVariable("slotId") Long slotId,
             @RequestParam int amount
@@ -29,7 +30,7 @@ public class SlotController {
         slotService.deposit(slotId, amount);
     }
 
-    @PutMapping(path = "/decrease/{slotId}") //  sukses
+    @PutMapping(path = "/decrease/{slotId}")
     public void decrease(
             @PathVariable("slotId") Long slotId,
             @RequestParam int amount,
@@ -38,7 +39,7 @@ public class SlotController {
         slotService.decrease(slotId, amount, description);
     }
 
-    @PutMapping(path = "/edit/{slotId}") // sukses
+    @PutMapping(path = "/edit/{slotId}")
     public void edit(
             @PathVariable("slotId") Long slotId,
             @RequestParam String name

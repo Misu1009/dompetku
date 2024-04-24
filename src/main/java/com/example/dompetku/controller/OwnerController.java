@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("http://localhost:3000")
 @RequestMapping(path = "api/v1/dompetku/owner")
 public class OwnerController {
     private final OwnerService ownerService;
@@ -28,12 +29,12 @@ public class OwnerController {
         return new Owner();
     }
 
-    @PostMapping(path="/saveOwner") // sukses
+    @PostMapping(path="/saveOwner")
     public void saveOwner(@RequestBody Owner owner){
         ownerService.saveOwner(owner);
     }
 
-    @PutMapping(path = "/edit/{ownerId}")  // sukses
+    @PutMapping(path = "/edit/{ownerId}")
     public void edit(
             @PathVariable("ownerId") Long ownerId,
             @RequestParam String username,
@@ -42,19 +43,19 @@ public class OwnerController {
         ownerService.edit(ownerId, username, password);
     }
 
-    @PostMapping(path = "/addNewWallet/{ownerId}") // sukses
+    @PostMapping(path = "/addNewWallet/{ownerId}")
     public void addNewWallet(
             @PathVariable("ownerId") Long ownerId
     ){
         ownerService.addNewWallet(ownerId);
     }
-    @PostMapping(path = "/deleteWallet/{walletId}") // sukses fk
+    @PostMapping(path = "/deleteWallet/{walletId}")
     public void deleteWallet(
             @PathVariable("walletId") Long walletId
     ){
         ownerService.deleteWallet(walletId);
     }
-    @PostMapping(path = "/delete/{ownerId}") // sukses fk
+    @PostMapping(path = "/delete/{ownerId}")
     public void deleteOwner(
             @PathVariable("ownerId") Long ownerId
     ){
